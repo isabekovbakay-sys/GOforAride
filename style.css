@@ -1,6 +1,7 @@
+/* ====== Базовый стиль ====== */
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #0f172a, #1e1b4b, #000);
   color: white;
   min-height: 100vh;
@@ -9,6 +10,7 @@ body {
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  padding: 1rem;
 }
 
 .card {
@@ -17,30 +19,37 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 2rem;
-  max-width: 600px;
-  width: 90%;
+  max-width: 700px;
+  width: 100%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   z-index: 10;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 0.5rem;
+  line-height: 1.3;
 }
 .subtitle {
   color: #ccc;
   margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .info {
   display: flex;
   justify-content: space-around;
   margin: 1.5rem 0;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 .info div {
+  flex: 1 1 120px;
   background: rgba(255,255,255,0.07);
   border-radius: 10px;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1rem;
+  min-width: 120px;
 }
 .label {
   display: block;
@@ -59,12 +68,13 @@ h1 {
   flex-wrap: wrap;
 }
 .btn {
-  padding: 0.7rem 1.2rem;
+  padding: 0.8rem 1.4rem;
   border-radius: 15px;
   text-decoration: none;
   border: none;
   cursor: pointer;
   transition: transform 0.2s, background 0.3s;
+  font-size: 1rem;
 }
 .btn:hover { transform: scale(1.05); }
 .primary { background: #6366f1; color: white; }
@@ -79,18 +89,64 @@ h1 {
 
 footer {
   margin-top: 1.5rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #aaa;
+  line-height: 1.4;
 }
 
-/* Велосипеды на фоне */
+/* ====== Анимация заднего фона ====== */
 .background .bike {
   position: absolute;
   left: -100px;
   font-size: 2rem;
   animation: ride 20s linear infinite;
+  white-space: nowrap;
 }
 @keyframes ride {
   0% { transform: translateX(-100px); }
   100% { transform: translateX(110vw); }
+}
+
+/* ====== 📱 Мобильная адаптация ====== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  .card {
+    padding: 1.2rem;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+  .info {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .info div {
+    min-width: auto;
+  }
+}
+
+/* ====== 💻 Для больших экранов ====== */
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  .card {
+    max-width: 900px;
+    padding: 3rem;
+  }
+  .btn {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
 }

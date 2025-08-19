@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e1b4b, #000);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.subtitle {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem 0;
+}
+.info div {
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+}
+.label {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+.value {
+  font-size: 1.1rem;
+}
+
+.buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: 0.7rem 1.2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+.btn:hover { transform: scale(1.05); }
+.primary { background: #6366f1; color: white; }
+.secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+.ghost { background: transparent; color: #ccc; border: 1px solid rgba(255,255,255,0.2); }
+
+.hint {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+footer {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* Велосипеды на фоне */
+.background .bike {
+  position: absolute;
+  left: -100px;
+  font-size: 2rem;
+  animation: ride 20s linear infinite;
+}
+@keyframes ride {
+  0% { transform: translateX(-100px); }
+  100% { transform: translateX(110vw); }
+}

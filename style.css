@@ -1,166 +1,159 @@
-/* ====== Базовый стиль ====== */
+/* Общие стили */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e1b4b, #000);
-  color: white;
-  text-align: center;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  color: #fff;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  position: relative;
-  z-index: 5;
-}
-
-/* ====== Карточка ====== */
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-
-h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-.subtitle {
-  color: #ccc;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-/* ====== Инфо блок ====== */
-.info {
-  display: flex;
-  justify-content: space-around;
-  margin: 1.5rem 0;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-.info div {
-  flex: 1 1 120px;
-  background: rgba(255,255,255,0.07);
-  border-radius: 10px;
-  padding: 0.7rem 1rem;
-  min-width: 120px;
-}
-.label {
-  display: block;
-  font-size: 0.8rem;
-  color: #aaa;
-}
-.value {
-  font-size: 1.1rem;
-}
-
-/* ====== Кнопки ====== */
-.buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.btn {
-  padding: 0.8rem 1.4rem;
-  border-radius: 15px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
-  font-size: 1rem;
-}
-.btn:hover { transform: scale(1.05); }
-.primary { background: #6366f1; color: white; }
-.secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
-.ghost { background: transparent; color: #ccc; border: 1px solid rgba(255,255,255,0.2); }
-
-.hint {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #aaa;
-}
-
-footer {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: #aaa;
-  line-height: 1.4;
-}
-
-/* ====== 📱 Мобильная адаптация ====== */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.6rem;
-  }
-  .subtitle {
-    font-size: 0.9rem;
-  }
-  .card {
-    padding: 1.2rem;
-  }
-  .buttons {
-    flex-direction: column;
-  }
-  .btn {
-    width: 100%;
-  }
-  .info {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .info div {
-    min-width: auto;
-  }
-}
-
-/* ====== 💻 Для больших экранов ====== */
-@media (min-width: 1200px) {
-  h1 {
-    font-size: 2.8rem;
-  }
-  .subtitle {
-    font-size: 1.2rem;
-  }
-  .card {
-    max-width: 900px;
-    padding: 3rem;
-  }
-  .btn {
-    font-size: 1.1rem;
-    padding: 1rem 2rem;
-  }
-}
-
-/* ====== Фоновые эмодзи ====== */
-.background {
+/* Фон */
+#background {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  pointer-events: none;
   overflow: hidden;
   z-index: 0;
 }
 
 .emoji {
   position: absolute;
-  font-size: 2rem;
-  animation: fall linear infinite;
-  opacity: 0.8;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: floatDown linear infinite;
 }
 
-@keyframes fall {
-  0% { transform: translateY(-10%); opacity: 0; }
-  20% { opacity: 1; }
-  100% { transform: translateY(110vh); opacity: 0; }
+@keyframes floatDown {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Карточка */
+.card {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 1.5rem;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info div {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+.value {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Кнопки */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn.primary {
+  background: #4e8ef7;
+  color: white;
+}
+.btn.primary:hover {
+  background: #6ea1f8;
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+.btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ddd;
+  min-height: 1.2em;
+}
+
+/* Подвал */
+footer {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #aaa;
+}
+
+/* Адаптив */
+@media (min-width: 600px) {
+  .info {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  h1 { font-size: 2.5rem; }
+  .subtitle { font-size: 1.25rem; }
 }

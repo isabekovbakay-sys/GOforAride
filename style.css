@@ -1,40 +1,30 @@
-/* Общие стили */
+/* Общий стиль */
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-  color: #fff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(to bottom right, #0f172a, #1e1b4b, #000);
+  color: white;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Фон */
-#background {
+/* Фоновые эмодзи */
+.emoji-bg {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
   overflow: hidden;
   z-index: 0;
 }
-
 .emoji {
   position: absolute;
+  top: -50px;
   font-size: 1.5rem;
-  opacity: 0.7;
-  animation: floatDown linear infinite;
+  animation: fall linear infinite;
+  opacity: 0.8;
 }
-
-@keyframes floatDown {
-  0% {
-    transform: translateY(-10vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.8; }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+@keyframes fall {
+  from { transform: translateY(-50px) rotate(0deg); }
+  to { transform: translateY(110vh) rotate(360deg); }
 }
 
 /* Карточка */
@@ -42,118 +32,75 @@ body {
   position: relative;
   z-index: 1;
   max-width: 600px;
-  margin: 2rem auto;
+  margin: 0 auto;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 1.5rem;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-}
-
-h1 {
-  text-align: center;
-  font-size: 2rem;
-  margin: 0 0 1rem;
-}
-
-.subtitle {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #ddd;
-  margin-bottom: 1.5rem;
-}
-
-.info {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.info div {
   background: rgba(255, 255, 255, 0.05);
-  padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  text-align: center;
+  margin-top: 5vh;
 }
 
-.label {
-  display: block;
-  font-size: 0.8rem;
-  color: #bbb;
+/* Заголовок */
+.card h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.card p {
+  color: rgba(255,255,255,0.8);
 }
 
-.value {
-  font-size: 1.2rem;
-  font-weight: bold;
+/* Информация */
+.info {
+  margin: 1.5rem 0;
+  display: grid;
+  gap: 0.5rem;
 }
 
 /* Кнопки */
-.buttons {
+.actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: center;
-  margin: 1.5rem 0;
+  margin-bottom: 1rem;
 }
-
 .btn {
-  padding: 0.75rem 1.25rem;
+  padding: 0.8rem 1.4rem;
   border-radius: 1rem;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
   border: none;
-  transition: transform 0.2s, background 0.2s;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s, background 0.3s;
 }
+.btn:hover { transform: scale(1.05); }
 
-.btn.primary {
-  background: #4e8ef7;
-  color: white;
-}
-.btn.primary:hover {
-  background: #6ea1f8;
-  transform: scale(1.05);
-}
+.btn.primary { background: #6366f1; color: white; }
+.btn.primary:hover { background: #818cf8; }
 
-.btn.secondary {
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-}
-.btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: scale(1.05);
-}
+.btn.secondary { background: rgba(255,255,255,0.1); color: white; }
+.btn.secondary:hover { background: rgba(255,255,255,0.2); }
 
-.btn.ghost {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
-}
-.btn.ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.05);
-}
+.btn.ghost { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+.btn.ghost:hover { background: rgba(255,255,255,0.1); }
 
-.hint {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #ddd;
-  min-height: 1.2em;
-}
-
-/* Подвал */
+/* Футер */
 footer {
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  text-align: center;
-  color: #aaa;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
 }
 
-/* Адаптив */
-@media (min-width: 600px) {
-  .info {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  h1 { font-size: 2.5rem; }
-  .subtitle { font-size: 1.25rem; }
+/* 📱 Адаптивность */
+@media (max-width: 768px) {
+  .card { margin: 2rem 1rem; padding: 1.5rem; }
+  .card h1 { font-size: 1.6rem; }
+  .btn { width: 100%; font-size: 1.1rem; }
+  .emoji { font-size: 1.2rem; }
+}
+
+@media (min-width: 1024px) {
+  .emoji { font-size: 2rem; }
+  .card h1 { font-size: 2.4rem; }
 }
